@@ -31,22 +31,51 @@ automation-project/ # 📂 Repositório principal
 
 ### 🐍 Python:
 
-<details>
-  <summary>Criação de políticas IAM na AWS</summary>
+<details> 
+    <summary>☁️ Criação de Buckets S3 com Tags e CORS</summary>
 
-    **Arquivo:** `python/aws/criacao-politicas-iam.py`
+    Arquivo: `python/aws/criacao-buckets-s3.py`
+    Este script automatiza a criação de buckets S3 nomeados por cliente, adiciona tags de identificação e configura as regras de CORS (Cross-Origin Resource Sharing) para cada bucket. É útil para ambientes multi-clientes onde é necessário organizar buckets com metadata e controle de acesso.
+
+    📌 Funcionalidades:
+    Criação de buckets com sufixo -dev-test
+
+    Inclusão de tags padrão (Environment, Name, Customer)
+
+    Verificação e configuração de regras CORS caso não existam
+
+    ✔️ Pré-requisitos:
+    Python 3.x
+
+    Biblioteca boto3 instalada
+
+    Credenciais AWS configuradas localmente (via aws configure ou variáveis de ambiente)
+
+    Permissão IAM com acesso para:
+
+    Criar buckets
+
+    Adicionar tags
+
+    Configurar CORS
+
+    ▶️ Execução:
+</details>
+
+<details>
+  <summary>☁️ Criação de políticas IAM na AWS</summary>
+
+    Arquivo: `python/aws/criacao-politicas-iam.py`
 
     Este script cria políticas IAM de leitura para buckets S3 personalizados para diferentes clientes.
 
-    #### Pré-requisitos:
+    ✔️ Pré-requisitos:
 
     - Python 3.x
     - Biblioteca `boto3` instalada
     - Credenciais AWS configuradas localmente (via `aws configure` ou variáveis de ambiente)
 
-    #### Execução:
-
-    ```bash
+    ▶️ Execução:
     cd python/aws
     python3 criacao-politicas-iam.py
 </details>
@@ -58,27 +87,23 @@ automation-project/ # 📂 Repositório principal
 
     Este script realiza o backup diário de um cluster MongoDB no Atlas e o faz o upload para um bucket no S3. Ele conecta-se à API do MongoDB Atlas para obter informações sobre os snapshots diários e, ao encontrá-los, faz o download do arquivo e o envia para o bucket do S3.
 
-    Pré-requisitos:
-    Python 3.x
-    Bibliotecas requests e boto3 instaladas
-    Acesso ao MongoDB Atlas com credenciais configuradas
-    Acesso ao S3 com permissões adequadas
-    Como executar:
-    Configuração das variáveis de ambiente:
+    ✔️ Pré-requisitos:
+    - Python 3.x
+    - Bibliotecas requests e boto3 instaladas
+    - Acesso ao MongoDB Atlas com credenciais configuradas
+    - Acesso ao S3 com permissões adequadas
+    - Como executar:
+    - Configuração das variáveis de ambiente:
 
     Configure as variáveis de ambiente com suas credenciais do MongoDB Atlas e informações do S3:
 
-    atlas_public_key
-    atlas_private_key
-    group_id
-    cluster_name
-    bucket_name
-    Executando o script:
-
-    <!-- end list -->
-
-    Bash
-
+    - atlas_public_key
+    - atlas_private_key
+    - group_id
+    - cluster_name
+    - bucket_name
+    
+    ▶️ Execução:
     cd python/mongodb
     python3 download-upload-bkp-diario.py
 </details>
@@ -90,28 +115,24 @@ automation-project/ # 📂 Repositório principal
 
     Este script realiza o backup do snapshot mais recente de um cluster MongoDB no Atlas e o faz o upload para um bucket no S3. Ele se conecta à API do MongoDB Atlas para obter os backups disponíveis, seleciona o mais recente e faz o download do arquivo. Após o download, o arquivo é enviado para o bucket do S3 especificado.
 
-    Pré-requisitos:
-    Python 3.x
-    Bibliotecas requests e boto3 instaladas
-    Acesso ao MongoDB Atlas com credenciais configuradas
-    Acesso ao S3 com permissões adequadas
-    Como executar:
-    Configuração das variáveis de ambiente:
+    ✔️ Pré-requisitos:
+    - Python 3.x
+    - Bibliotecas requests e boto3 instaladas
+    - Acesso ao MongoDB Atlas com credenciais configuradas
+    - Acesso ao S3 com permissões adequadas
+    - Como executar:
+    - Configuração das variáveis de ambiente:
 
     Configure as variáveis de ambiente com suas credenciais do MongoDB Atlas e informações do S3:
 
-    atlas_public_key
-    atlas_private_key
-    group_id
-    cluster_name
-    s3_bucket_name
-    s3_folder_path
-    Executando o script:
+    - atlas_public_key
+    - atlas_private_key
+    - group_id
+    - cluster_name
+    - s3_bucket_name
+    - s3_folder_path
 
-    <!-- end list -->
-
-    Bash
-
+    ▶️ Execução:
     cd python/mongodb
     python3 download-upload-bkp-recente.py
 </details>
