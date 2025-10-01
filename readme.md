@@ -10,19 +10,17 @@ Repositório criado para guardar scripts e automações em Python e Shell desenv
 - ⚙️ Systemd (para serviços Linux)
 ---
 
-## 📁 Estrutura do projeto
 
-automation-project/ # 📂 Repositório principal
-├── python/ # 🐍 Scripts Python
-│   └── aws/ # ☁️ Automação para serviços AWS
-│       └── criacao-politicas-iam.py # 🛡️ Criação de políticas IAM em S3
-├── mongodb/ # 💾 Scripts para manipulação de MongoDB
-│   └── download-upload-bkp/ # 💾 Backup
-│       ├── download-upload-bkp-diario.py # 🗓️ Backup diário de MongoDB
-│       └── download-upload-bkp-recente.py # ⏱️ Backup recente de MongoDB
-└── scripts-bash/ # ⚙️ Scripts Bash
-└── services-linux/ # 🛠️ Utilitários para administração de sistemas Linux
-└── zabbix-update.sh # 🚀 Validação e atualização do Zabbix Agent
+## 📁 Estrutura do Projeto
+
+| 📂 Caminho | 🧩 Tipo | 📄 Descrição |
+|-----------|--------|--------------|
+| [`python/aws/criacao-buckets-s3.py`](python/aws/criacao-buckets-s3.py) | 🐍 Python | Criação automatizada de buckets S3 com tags e regras de CORS |
+| [`python/aws/criacao-politicas-iam.py`](python/aws/criacao-politicas-iam.py) | 🛡️ Python | Criação de políticas IAM personalizadas para buckets S3 |
+| [`python/mongodb/download-upload-bkp-diario.py`](python/mongodb/download-upload-bkp-diario.py) | 🗓️ Python | Backup diário de snapshots do MongoDB Atlas |
+| [`python/mongodb/download-upload-bkp-recente.py`](python/mongodb/download-upload-bkp-recente.py) | ⏱️ Python | Backup do snapshot mais recente do MongoDB Atlas |
+| [`scripts-bash/services-linux/zabbix-update.sh`](scripts-bash/services-linux/zabbix-update.sh) | ⚙️ Bash | Validação e atualização do agente Zabbix em servidores Linux |
+| [`scripts-bash/mongo/bkp-db-collection.sh`](scripts-bash/mongo/bkp-db-collection.sh) | 💾 Bash | Backup de coleção MongoDB com envio automático para S3 |
 
 
 ---
@@ -161,6 +159,18 @@ automation-project/ # 📂 Repositório principal
 
     sudo bash zabbix-update.sh
 </details>
+
+<details> <summary> Backup de coleção MongoDB com envio para S3</summary>
+
+Arquivo: scripts-bash/mongo/bkp-db-collection.sh
+
+Este script realiza o backup de uma coleção específica do MongoDB e envia os arquivos diretamente para um bucket S3 na AWS. Ele valida ferramentas, permissões e configurações antes de executar o backup e o upload, garantindo segurança e confiabilidade no processo.
+
+✔️ Funcionalidades: - Validação de argumentos e ferramentas (mongodump, aws, mongorestore) - Verificação de acesso ao MongoDB e à AWS - Backup da coleção com compressão (--gzip) - Upload automático para o S3 - Logs coloridos e informativos - Limpeza de variáveis sensíveis
+
+✔️ Pré-requisitos: - MongoDB Database Tools instalados - AWS CLI configurado - Arquivo .env com variáveis de acesso
+
+▶️ Execução: bash cd scripts-bash/mongo bash bkp-db-collection.sh [host] [db_name] [collection_name] [output_dir] </details>
 
 ## 🙌 Contribuições
 Atualmente, este repositório é de uso pessoal, mas contribuições e sugestões são bem-vindas!
