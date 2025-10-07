@@ -11,10 +11,10 @@ e faz upload do backup para um bucket S3.
 O host ou cluster do MongoDB (ex: 'meucluster.exemplo.net').
 
 .PARAMETER DatabaseName
-O nome do banco de dados a ser feito o backup. (Nome corrigido para evitar conflito de alias)
+O nome do banco de dados a ser feito o backup. 
 
 .PARAMETER CollectionName
-O nome da colecao especifica a ser feito o backup. (Nome corrigido para convencao PowerShell)
+O nome da colecao especifica a ser feito o backup.
 
 .PARAMETER Output_Dir
 O diretorio local onde o arquivo de backup sera salvo temporariamente.
