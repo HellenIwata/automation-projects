@@ -4,7 +4,7 @@ import boto3
 def show_menu_policy_creation():
     print("=== IAM Policy Creation Menu ===")
     print("1. Create a new IAM policy")
-    print("2. Create a list IAM policies")
+    print("2. Create multiple IAM policies")
     print("3. Exit to main menu")
     choice = input("Please select an option (1-3): ")
     return choice
@@ -55,7 +55,7 @@ def create_iam_policy():
     except iam_client.exceptions.EntityAlreadyExistsException:
         print("Policy with name '{}' already exists.".format(policy_name))
 
-def create_iam_policy_list(customer):
+def create_multiple_iam_policies(customer):
     print("Creating a new IAM policy...")
     # Placeholder for actual IAM policy creation logic
     customer_name = customer
@@ -101,7 +101,7 @@ def create_iam_policy_list(customer):
     except Exception as e:
         print("Error creating policy: {}".format(e))
 
-def create_list_iam_policies():
+def create_iam_policies():
     print("Creating a list of IAM policies...")
     customer = []
     while True:
@@ -113,16 +113,15 @@ def create_list_iam_policies():
         else:
             continue
     for customer in customer:
-        create_iam_policy_list(customer)
+        create_multiple_iam_policies(customer)
 
 def handle_policy_creation_choice(choice):
     match choice:
         case '1':
             create_iam_policy()
-            
-        
+
         case '2':
-            create_list_iam_policies()
+            create_iam_policies()
         case '3':
             return
         case _:
