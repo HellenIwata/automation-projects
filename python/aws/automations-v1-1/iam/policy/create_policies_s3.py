@@ -3,8 +3,8 @@ import boto3
 
 def show_menu_policy_creation():
     print("=== IAM Policy Creation Menu ===")
-    print("1. Create a new IAM policy")
-    print("2. Create multiple IAM policies")
+    print("1. Create a new IAM policy for S3 access")
+    print("2. Create multiple IAM policies for S3 access")
     print("3. Exit to main menu")
     choice = input("Please select an option (1-3): ")
     return choice
