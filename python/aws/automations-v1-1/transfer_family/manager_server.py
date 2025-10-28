@@ -272,6 +272,7 @@ def export_users():
 
 
 def handle_transfer_choice(choice):
+
     match choice:
         case '1':
             create_server()
@@ -292,3 +293,13 @@ def handle_transfer_choice(choice):
             return 
         case _:
             print("Invalid choice. Please select a valid option (1-6).")
+
+def main():
+    while True:
+        choice = show_menu_transfer()
+        if choice == '0':
+            break
+        handle_transfer_choice(choice)
+
+if __name__ == "__main__":
+    main()
