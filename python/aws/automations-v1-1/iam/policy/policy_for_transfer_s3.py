@@ -21,7 +21,6 @@ def create_policy():
     ]
 
     action_write = [
-        "s3:ListBucket",
         "s3:GetObject",
         "s3:GetObjectVersion",
         "s3:GetObjectAcl",
@@ -29,6 +28,11 @@ def create_policy():
         "s3:PutObjectAcl",
         "s3:DeleteObject"
     ]
+
+    action_list_bucket = [
+        "s3:ListBucket"
+    ]
+
 
     policy_document = {
         "Version": "2012-10-17",
@@ -46,14 +50,21 @@ def create_policy():
                 "Effect": "Allow",
                 "Action": action_write,
                 "Resource": [
-                    bucket_arn,
                     bucket_unique_arn
                 ],
                 "Condition": {
-                    "StringLike": {
-                        "transfer:UserName": "*-dbw"
+                    "StringLikeIfExists": {
+                        "aws:username": "*-dbw"
                     }
                 }
+            },
+            {
+                "Sid": "AllowListBucket",
+                "Effect": "Allow",
+                "Action": action_list_bucket,
+                "Resource": [
+                    bucket_arn
+                ],
             }
         ]
     }
