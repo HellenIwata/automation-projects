@@ -1,5 +1,7 @@
-from iam.policy.create_policies import main as main_policy
+from iam.policy.create_policies_s3 import main as main_policy
 from iam.role.create_role import main as main_role
+from bucket_s3.management_bucket import main as main_bucket
+from transfer_family.manager_server import main as main_transfer_family
 
 def show_menu():
     menu = """
@@ -11,7 +13,7 @@ def show_menu():
     3. Management of IAM Role
     4. Management of AWS Transfer Family
     5. Management of AWS General Resources
-    6. Exit
+    0. Exit
 --------------------------------------------
     """
     print(menu)
@@ -21,19 +23,19 @@ def show_menu():
 def handler_management_choice(choice):
     match choice:
         case '1':
-            pass
+            main_bucket()
         case '2':
             main_policy()
         case '3':
             main_role()
         case '4':
-            pass
+            main_transfer_family()
         case '5':
             pass
-        case '6':
+        case '0':
             return
         case _:
-            print("Invalid choice. Please select a valid option (1-6).")
+            print("Invalid choice. Please select a valid option (0-5).")
 
 
 def main():    
