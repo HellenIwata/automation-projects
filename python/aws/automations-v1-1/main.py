@@ -41,7 +41,7 @@ def handler_management_choice(choice):
 def main():    
     while True:
         choice = show_menu()
-        if choice == '6':
+        if choice == '0':
             break
         handler_management_choice(choice)
 
