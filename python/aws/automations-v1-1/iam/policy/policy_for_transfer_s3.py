@@ -14,7 +14,6 @@ def create_policy():
     bucket_unique_arn = 'arn:aws:s3:::{}/{}/*'.format(bucket_name, object_path)
 
     action_read = [
-        "s3:ListBucket",
         "s3:GetObject",
         "s3:GetObjectVersion",
         "s3:GetObjectAcl"       
@@ -23,7 +22,6 @@ def create_policy():
     action_write = [
         "s3:GetObject",
         "s3:GetObjectVersion",
-        "s3:GetObjectAcl",
         "s3:PutObject",
         "s3:PutObjectAcl",
         "s3:DeleteObject"
