@@ -1,0 +1,17 @@
+# Ambiente virtual
+aws-env/*
+
+# Archivos de configuración de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos de configuración de IDEs
+.vscode/
+.idea/
+
+# Archivos de logs
+*.log
+
+# Archivos que não devem ser versionados dentro da branch python
+users.json
