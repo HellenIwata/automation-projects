@@ -1,7 +1,7 @@
-from iam.policy.create_policies_s3 import main as main_policy
-from iam.role.create_role import main as main_role
-from bucket_s3.management_bucket import main as main_bucket
-from transfer_family.manager_server import main as main_transfer_family
+from scripts.iam.policy.create_policies_s3 import main as main_policy
+from scripts.iam.role.create_role import main as main_role
+from scripts.bucket_s3.management_bucket import main as main_bucket
+from scripts.transfer_family.manager_server import main as main_transfer_family
 
 def show_menu():
     menu = """
