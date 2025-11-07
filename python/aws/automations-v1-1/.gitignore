@@ -15,4 +15,4 @@ __pycache__/
 *logs.txt
 
 # Archivos que não devem ser versionados dentro da branch python
-users.json
+*.json
