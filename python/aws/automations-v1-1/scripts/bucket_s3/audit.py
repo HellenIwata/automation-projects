@@ -15,9 +15,9 @@ def get_account_info():
     try:
         response = sts_client.get_caller_identity()
         account_id = response['Account']
-        account_name = response['Arn'].split('/')[1]
+        account_username = response['Arn'].split('/')[1]
 
-        return account_id, account_name
+        return account_id, account_username
     except Exception as e:
         print(f"Error getting account information: {e}")
         return None, None
@@ -107,7 +107,8 @@ def audit_run():
     print("\n" + "="*50)
     print("         STARTING S3 SECURITY AUDIT REPORT")
     print("="*50)
-    account_id, account_name = get_account_info()
+
+    account_id, account_username = get_account_info()
     list_buckets()
     public_buckets = check_public_acess()
     
@@ -124,7 +125,7 @@ def audit_run():
         
     final_reports = {
         "aws_account_id": account_id,
-        "aws_account_name": account_name,
+        "aws_account_username": account_username,
         "found_bucket_public_access": len(public_buckets),
         "name_buckets": public_buckets,
         "details_bucket": final_details
